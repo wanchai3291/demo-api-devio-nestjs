@@ -30,6 +30,7 @@ model user {
   id    String   @id @default(auto()) @map("_id") @db.ObjectId
   username  String @unique
   password  String
+  role String
   createDate DateTime  @default(now()) @db.Date
   updateDate DateTime  @default(now()) @db.Date
 }

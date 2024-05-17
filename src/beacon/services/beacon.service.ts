@@ -14,12 +14,12 @@ export class BeaconService {
       throw error;
     }
   }
-  public async createBeacon(beacon: Beacon) {
+  public async createBeacon(beacon: Beacon, user: any) {
     try {
       const response = await this.repository.insertBeacon({
         ...beacon,
-        createdBy: 'test',
-        updatedBy: 'test',
+        createdBy: user.username,
+        updatedBy: user.username,
       });
       return response;
     } catch (error) {

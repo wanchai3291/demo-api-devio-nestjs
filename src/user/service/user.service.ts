@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { UserRepositoryService } from '../repository/repository.dto';
+import { User } from '../dtos/user.dto';
 
 @Injectable()
 export class UserService {
   constructor(private userRepositoryService: UserRepositoryService) {}
-  public async createUser(data: any) {
+  public async createUser(data: User) {
     if (await this.userRepositoryService.getUser({ username: data.username })) {
       throw new Error(`User ${data.username} already exists`);
     }
@@ -16,6 +17,7 @@ export class UserService {
     return this.userRepositoryService.insertUser({
       username: data.username,
       password: hash,
+      role: data.role,
     });
   }
 }

@@ -7,4 +7,7 @@ export class User {
 
   @IsString()
   password: string;
+
+  @IsString()
+  role: string;
 }
