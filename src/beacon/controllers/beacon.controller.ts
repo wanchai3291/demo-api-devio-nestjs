@@ -11,10 +11,10 @@ import { Beacon } from '../dtos/beacon.dto';
 import { AuthGuard } from 'src/guards/auth.guard';
 
 @Controller('beacon')
+@UseGuards(AuthGuard)
 export class BeaconController {
   constructor(private beaconService: BeaconService) {}
   @Post()
-  @UseGuards(AuthGuard)
   async create(@Request() req: any, @Body() body: Beacon) {
     return await this.beaconService.createBeacon(body, req.user);
   }

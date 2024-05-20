@@ -6,8 +6,6 @@ export class UserRepositoryService {
   constructor(private prisma: PrismaService) {}
 
   public async insertUser(data: any) {
-    console.log(data);
-
     return await this.prisma.user.create({ data });
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
