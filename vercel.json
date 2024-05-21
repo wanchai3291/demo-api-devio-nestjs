@@ -2,10 +2,6 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/node"
-    },
-    {
       "src": "dist/src/main.js",
       "use": "@vercel/node"
     }
@@ -17,8 +13,10 @@
       "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"]
     }
   ],
-  "env": {
-    "DATABASE_URL": "mongodb+srv://wsdevelopmentcenter:TXuqSdwfScf0BjLs@cluster0.mdhhszn.mongodb.net/devio?retryWrites=true&w=majority&appName=Cluster0",
-    "JWT_SECRET": "devio"
+  "build": {
+    "env": {
+      "DATABASE_URL": "mongodb+srv://wsdevelopmentcenter:TXuqSdwfScf0BjLs@cluster0.mdhhszn.mongodb.net/devio?retryWrites=true&w=majority&appName=Cluster0",
+      "JWT_SECRET": "devio"
+    }
   }
 }

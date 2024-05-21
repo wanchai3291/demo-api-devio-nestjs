@@ -8,7 +8,7 @@ import { BaseExceptionFilter } from '@nestjs/core';
 
 @Catch() // Catch all exceptions
 export class AllExceptionsFilter extends BaseExceptionFilter {
-  catch(exception: unknown, host: ArgumentsHost) {
+  catch(exception: any, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
     const request = ctx.getRequest();
@@ -22,7 +22,7 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
 
     response.status(status).json({
       statusCode: status * 100,
-      status: 'success',
+      statusMessage: exception.response.error,
       timestamp: new Date().toISOString(),
       path: request.url,
       message,
