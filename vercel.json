@@ -2,16 +2,23 @@
   "version": 2,
   "builds": [
     {
-      "src": "/dist/src/main.ts",
+      "src": "package.json",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "dist/src/main.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/dist/src/main.ts",
-      "methods": ["GET", "POST", "PUT", "DELETE"]
+      "dest": "dist/src/main.js",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"]
     }
   ],
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "env": {
+    "DATABASE_URL": "mongodb+srv://wsdevelopmentcenter:TXuqSdwfScf0BjLs@cluster0.mdhhszn.mongodb.net/devio?retryWrites=true&w=majority&appName=Cluster0",
+    "JWT_SECRET": "devio"
+  }
 }
